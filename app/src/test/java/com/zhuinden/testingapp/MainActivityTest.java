@@ -1,6 +1,5 @@
 package com.zhuinden.testingapp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,9 +26,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @Config(constants = BuildConfig.class, sdk = 23)
 @RunWith(RobolectricTestRunner.class)
-public class ExampleUnitTest {
+public class MainActivityTest {
 
-    Activity activity;
+    MainActivity activity;
 
     @Rule
     public MockitoRule mockitoRule = MockitoJUnit.rule();
@@ -47,7 +46,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void mainActivity_showsHelloWorld() {
+    public void showsHelloWorld() {
         TextView helloWorld = (TextView)activity.findViewById(R.id.main_hello_world);
         //assertThat(helloWorld.getText().toString()).isEqualTo("Hello World!");
         //assertThat(helloWorld.getText().toString()).is(new HamcrestCondition<>(Matchers.equalTo("Hello World!")));
@@ -56,7 +55,7 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void mainActivity_startsSecondActivity() {
+    public void startsSecondActivity() {
         Button button = (Button)activity.findViewById(R.id.main_start_next);
         button.performClick();
         Intent expectedIntent = new Intent(activity, SecondActivity.class);
