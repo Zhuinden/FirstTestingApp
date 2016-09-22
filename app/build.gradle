@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion 24
@@ -103,6 +104,21 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude module: 'recyclerview-v7'
     }
+
+    androidTestCompile 'com.squareup.assertj:assertj-android:1.1.1'
+    androidTestCompile('com.squareup.assertj:assertj-android-support-v4:1.1.1') {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile('com.squareup.assertj:assertj-android-appcompat-v7:1.1.1') {
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile('com.squareup.assertj:assertj-android-recyclerview-v7:1.1.1') {
+        exclude module: 'recyclerview-v7'
+    }
+
+    androidTestCompile 'com.google.dagger:dagger:2.7'
+    apt 'com.google.dagger:dagger-compiler:2.7'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
 }
 
 configurations.all {
